@@ -1,3 +1,16 @@
+---
+title: 首页
+hero:
+  image: /short-logo.png
+  desc: React方面的Hooks
+  actions:
+    - text: 指南
+      link: /guide
+    - text: Hooks 列表
+      link: /hooks
+footer: Copyright (c) © 2024 by zyl, All Rights Reserved
+---
+
 ## ✨ 特性
 
 - 可靠的代码健壮：使用 Typescript 构建，提供完善的类型定义文件
@@ -17,5 +30,5 @@ $ yarn add code-hooks
 ## 🔨 使用
 
 ```ts
-import { useMount } from 'code-hooks';
+import { useToggle } from 'code-hooks';
 ```

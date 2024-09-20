@@ -1,0 +1,7 @@
+{
+  "extends": "../../tsconfig.pro.json",
+  "compilerOptions": {
+    "composite": true,
+    "rootDir": "src"
+  }
+}
