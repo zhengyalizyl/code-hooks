@@ -1,0 +1,23 @@
+{
+  "name": "code-hooks",
+  "version": "1.0.0",
+  "description": "自定义hooks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhengyalizyl/code-hooks.git"
+  },
+  "keywords": [
+    "react",
+    "hooks"
+  ],
+  "author": "zyl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhengyalizyl/code-hooks/issues"
+  },
+  "homepage": "https://github.com/zhengyalizyl/code-hooks#readme"
+}
