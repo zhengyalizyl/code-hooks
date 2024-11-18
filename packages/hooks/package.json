@@ -8,7 +8,7 @@
   "unpkg": "dist/hooks.js",
   "sideEffects": false,
   "scripts": {
-    "build": "gulp",
+    "build": "gulp && webpack-cli",
     "build:encode-bundle": "encode-bundle src/index.ts --format esm"
   },
   "files": [

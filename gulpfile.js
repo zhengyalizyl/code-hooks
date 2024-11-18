@@ -30,21 +30,12 @@ gulp.task('cjs', () => {
 });
 
 // 生成ESM
-// gulp.task('es', () => {
-//   const tsProject = ts.createProject('tsconfig.pro.json', {
-//     module: 'ESNext',
-//   });
-//   // gulp的链式调用
-//   return tsProject.src().pipe(tsProject()).pipe(babel()).pipe(gulp.dest('es/'));
-// });
-
 gulp.task('es', () => {
   const tsProject = ts.createProject('tsconfig.pro.json', {
     module: 'ESNext',
   });
-  const a = tsProject.src().pipe(tsProject()).pipe(babel()).pipe(gulp.dest('es/'));
-  console.log(a, '-----a');
-  return a;
+  // gulp的链式调用
+  return tsProject.src().pipe(tsProject()).pipe(babel()).pipe(gulp.dest('es/'));
 });
 
 // 生成声明文件
