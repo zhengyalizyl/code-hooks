@@ -6,8 +6,8 @@ const fg = require('fast-glob');
 const gm = require('gray-matter');
 const fse = require('fs-extra');
 
-//将代码和主食生成一个json中汇总
-//metaData.json
+// 将代码和useToggle下的一个md的第一句话生成一个json中汇总
+// metaData.json
 
 async function generateMetaDesc(path) {
   if (!fs.existsSync(path)) {
@@ -16,11 +16,12 @@ async function generateMetaDesc(path) {
 
   const mdFile = fs.readFileSync(path, 'utf-8');
   const { content } = await gm(mdFile);
+  // 找到标题下的第一句话
   let description =
     (content.replace(/\r\n/g, '\n').match(/# \w+[\s\n]+(.+?)(?:, |\. |\n|\.\n)/m) || [])[1] || '';
 
   description = description.trim();
-  description = description.chartAt(0).toLowerCase() + description.slice(1);
+  description = description.charAt(0).toLowerCase() + description.slice(1);
   return description;
 }
 
@@ -55,10 +56,11 @@ async function generateMetaData() {
   });
   return metaData;
 }
-gulp.task('metadata', async function () {
-  //生成对象
-  const metaData = generateMetaData();
-  //写入文件里
-  await fse.writeJson();
+
+gulp.task('metadata', async () => {
+  // 生成对象
+  const metaData = await generateMetaData();
+  // 写入文件里
+  await fse.writeJson('metadata.json', metaData, { spaces: 2 });
 });
-exports.default = gulp.series(commonConfig.default);
+exports.default = gulp.series(commonConfig.default, 'metadata');

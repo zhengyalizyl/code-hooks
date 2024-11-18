@@ -17,16 +17,6 @@ gulp.task('clean', async () => {
   await del('dist/**');
 });
 
-// 生成ESM
-gulp.task('es', () => {
-  const tsProject = ts.createProject('tsconfig.pro.json', {
-    module: 'ESNext',
-  });
-
-  // gulp的链式调用
-  return tsProject.src().pipe(tsProject()).pipe(babel()).pipe(gulp.dest('es/'));
-});
-
 // 生成cjs
 gulp.task('cjs', () => {
   return gulp
@@ -37,6 +27,24 @@ gulp.task('cjs', () => {
       }),
     )
     .pipe(gulp.dest('lib/'));
+});
+
+// 生成ESM
+// gulp.task('es', () => {
+//   const tsProject = ts.createProject('tsconfig.pro.json', {
+//     module: 'ESNext',
+//   });
+//   // gulp的链式调用
+//   return tsProject.src().pipe(tsProject()).pipe(babel()).pipe(gulp.dest('es/'));
+// });
+
+gulp.task('es', () => {
+  const tsProject = ts.createProject('tsconfig.pro.json', {
+    module: 'ESNext',
+  });
+  const a = tsProject.src().pipe(tsProject()).pipe(babel()).pipe(gulp.dest('es/'));
+  console.log(a, '-----a');
+  return a;
 });
 
 // 生成声明文件
@@ -52,4 +60,4 @@ gulp.task('copyReadme', async () => {
   await gulp.src('../../README.md').pipe(gulp.dest('../../packages/hooks'));
 });
 
-exports.default = gulp.series('clean', 'es', 'cjs');
+exports.default = gulp.series('clean', 'es', 'cjs', 'declaration', 'copyReadme');
