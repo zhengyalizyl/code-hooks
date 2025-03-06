@@ -19,6 +19,7 @@ gulp.task('clean', async () => {
 
 // 生成cjs
 gulp.task('cjs', () => {
+  //
   return gulp
     .src(['./es/**/*.js'])
     .pipe(
@@ -31,6 +32,7 @@ gulp.task('cjs', () => {
 
 // 生成ESM
 gulp.task('es', () => {
+  // tsc modules esnext
   const tsProject = ts.createProject('tsconfig.pro.json', {
     module: 'ESNext',
   });
